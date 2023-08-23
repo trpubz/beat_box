@@ -8,8 +8,16 @@ class Linked_List
   end
 
   def append(data)
-    new = Node.new(data)
-    @head = new
+    if @head.nil?
+      @head = Node.new(data)
+      return
+    end
+
+    node = @head
+    until node.next_node.nil?
+      node = node.next_node
+    end
+    node.next_node = Node.new(data)
   end
 
   def count

@@ -26,11 +26,25 @@ describe Linked_List do
     expect(list.head.next_node).to be_nil
   end
 
-  it 'should be able to count itsel' do
+  it 'should be able to count itself' do
     expect(list.count).to eq 1
   end
 
   it 'should be able to convert it\'s nodes data to a string' do
     expect(list.to_string).to eq 'doop'
+  end
+
+  it 'should be able to append another node' do
+    list.append('deep')
+    p list
+    expect(list.head.next_node).to be_a Node
+  end
+
+  it 'should be able to count itself' do
+    expect(list.count).to eq 2
+  end
+
+  it 'should be able to convert it\'s nodes data to a string' do
+    expect(list.to_string).to eq 'doop deep'
   end
 end
