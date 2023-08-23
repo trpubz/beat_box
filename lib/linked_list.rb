@@ -13,26 +13,24 @@ class Linked_List
   end
 
   def count
-    counter = 0
-    node = @head
-    until node.nil?
-      node = node.next_node
-      counter += 1
-    end
-    return counter
+    _, count = nodder
+    return count
   end
 
   def to_string
-    str = ''
-    node = @head
-    until node.nil?
-      str << node.data.to_s + ' '
-      node = node.next_node
-    end
-    return str.chomp(' ')
+    str, _ = nodder
+    return str
   end
 
   def nodder
-
+    str = ''
+    counter = 0
+    node = @head
+    until node.nil?
+      str << node.data.to_s + ' '
+      counter += 1
+      node = node.next_node
+    end
+    return str.chomp(' '), counter
   end
 end
