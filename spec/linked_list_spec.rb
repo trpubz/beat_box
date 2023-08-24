@@ -78,10 +78,26 @@ end
 
 describe 'LinkedList #find, #pop, #includes?' do
   list = LinkedList.new
-  list.append('deep').append('woo').append('shi').append('shu').append('blop')
-  expect(list.to_string).to eq 'deep woo shi shu blop'
+  %w(deep woo shi shu blop).each { |w| list.append(w)}
 
   it 'should find elements correctly' do
-    expect(listlist.find(2, 1)). to eq 'shi'
+    expect(list.to_string).to eq 'deep woo shi shu blop'
+    expect(list.find(2, 1)).to eq 'shi'
+    expect(list.find(1, 3)).to eq 'woo shi shu'
+  end
+
+  it 'should evaluate data existence' do
+    expect(list.includes?('deep')).to be true
+    expect(list.includes?('dep')).to be false
+  end
+
+  it 'pop elements' do
+    expect(list.pop).to eq 'blop'
+    expect(list.pop).to eq 'shu'
+    expect(list.to_string).to eq 'deep woo shi'
+    expect(list.pop).to eq 'shi'
+    expect(list.pop).to eq 'woo'
+    expect(list.pop).to eq 'deep'
+    expect(list.to_string).to eq ''
   end
 end
