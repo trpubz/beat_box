@@ -48,7 +48,42 @@ class LinkedList
 
   def find(starting_index, num_nodes)
     returned_data = ''
-    
+
+    node = @head
+
+    starting_index.times do
+      node = node.next_node
+    end
+    num_nodes.times do
+      returned_data << node.data + " "
+      node = node.next_node
+    end
+
+    return returned_data.chomp(" ")
+  end
+
+  def includes?(data)
+    node = @head
+    until node.nil?
+      return true if node.data == data
+      node = node.next_node
+    end
+    return false
+  end
+
+  def pop
+    node = @head
+    prior_node = Node.new(nil) # instantiation for when popping the head
+    until node.next_node.nil?
+      prior_node = node
+      node = node.next_node
+    end
+
+    prior_node.next_node = nil
+    pop_data = node.data
+    # need to erase head if it's being popped
+    @head = nil if node == head
+    return pop_data
   end
 
   def head_present?(data)
