@@ -101,3 +101,11 @@ describe 'LinkedList #find, #pop, #includes?' do
     expect(list.to_string).to eq ''
   end
 end
+
+describe '#append refactoring' do
+  it 'should be able to append multiple elements in 1 call' do
+    list = LinkedList.new
+    list.append("deep woo shi shu blop")
+    expect(list.count).to eq 5
+  end
+end
