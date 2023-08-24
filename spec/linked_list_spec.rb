@@ -1,11 +1,11 @@
 require './lib/linked_list'
 require './lib/node'
 
-describe Linked_List do
-  list = Linked_List.new
-  p list
-  it 'should be a Linked_List' do
-    expect(list).to be_a Linked_List
+describe LinkedList do
+  list = LinkedList.new
+  # p list
+  it 'should be a LinkedList' do
+    expect(list).to be_a LinkedList
   end
 
   it 'should have a head' do
@@ -14,7 +14,7 @@ describe Linked_List do
 
   it 'should append a node' do
     list.append('doop')
-    p list
+    # p list
     expect(list.head).to be_a Node
   end
 
@@ -36,7 +36,7 @@ describe Linked_List do
 
   it 'should be able to append another node' do
     list.append('deep')
-    p list
+    # p list
     expect(list.head.next_node).to be_a Node
   end
 
@@ -46,5 +46,42 @@ describe Linked_List do
 
   it 'should be able to convert it\'s nodes data to a string' do
     expect(list.to_string).to eq 'doop deep'
+  end
+end
+
+describe 'LinkedList #insert and #prepend' do
+  list = LinkedList.new
+  it 'should append data to the end of list' do
+    list.append('plop')
+    expect(list.to_string).to eq 'plop'
+
+    list.append('suu')
+    expect(list.to_string).to eq 'plop suu'
+  end
+
+  it 'should prepend data to front of list' do
+    list.prepend('dop')
+    expect(list.to_string).to eq 'dop plop suu'
+    expect(list.count).to eq 3
+  end
+
+  it 'should insert data anywhere into the list' do
+    list.insert(2, 'woo')
+    expect(list.to_string).to eq 'dop plop woo suu'
+  end
+
+  it 'should handle indexes out of range' do
+    list.insert(5, 'pfft')
+    expect(list.count).to eq 4
+  end
+end
+
+describe 'LinkedList #find, #pop, #includes?' do
+  list = LinkedList.new
+  list.append('deep').append('woo').append('shi').append('shu').append('blop')
+  expect(list.to_string).to eq 'deep woo shi shu blop'
+
+  it 'should find elements correctly' do
+    expect(listlist.find(2, 1)). to eq 'shi'
   end
 end
