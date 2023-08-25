@@ -48,3 +48,31 @@ describe 'bb list should validate beats' do
     expect(bb.all).to eq "tee tee tee deep"
   end
 end
+
+describe 'bb should handle speed & voice' do
+  bb = BeatBox.new("deep dop dop deep")
+  it 'should play normal' do
+    expect(bb.play).to eq 4
+  end
+
+  it 'should set a rate' do
+    expect(bb.rate = 100).to eq 100
+    expect(bb.play).to eq 4
+  end
+
+  it 'should set a voice' do
+    bb.voice = "Daniel"
+    expect(bb.play).to eq 4
+    bb.voice = "Junior"
+    expect(bb.play).to eq 4
+  end
+
+  it 'should reset the rate' do
+    expect(bb.reset_rate).to eq 500
+  end
+
+  it 'should reset the voice' do
+    expect(bb.reset_voice).to eq "Boing"
+    expect(bb.play).to eq 4
+  end
+end
