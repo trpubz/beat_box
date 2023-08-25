@@ -6,7 +6,7 @@ Functional Data Structure => Linked List exploration
 
 Linked List --
               \
-                Nodes --
+                [Nodes]
                 |
             Data && Node Pointer
                       |
