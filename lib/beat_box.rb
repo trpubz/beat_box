@@ -6,5 +6,7 @@ class BeatBox
     @list = LinkedList.new
   end
 
-  
+  def append(data)
+    @list.append(data)
+  end
 end

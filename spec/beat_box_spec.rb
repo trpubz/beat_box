@@ -14,3 +14,15 @@ describe BeatBox do
     expect(bb.list.head).to eq nil
   end
 end
+
+describe 'bb functionality' do
+  bb = BeatBox.new
+  it 'should be able to append a list of beats' do
+    bb.append("deep doo ditt")
+    expect(bb.list.count).to eq 3
+    expect(bb.list.head.data).to eq "deep"
+    expect(bb.list.head.next_node.data).to eq "doo"
+    bb.append("woo hoo shu")
+    expect(bb.list.count).to eq 6
+  end
+end
