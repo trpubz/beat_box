@@ -8,12 +8,6 @@ class LinkedList
   end
 
   def append(data)
-
-    if data.split(" ").length > 1
-      data.split(" ").each { |d| self.append(d) }
-      return
-    end
-
     return unless head_present?(data)
 
     node = @head
