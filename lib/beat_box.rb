@@ -6,5 +6,15 @@ class BeatBox
     @list = LinkedList.new
   end
 
-  
+  def append(data)
+    @list.append(data)
+  end
+
+  def count
+    @list.count
+  end
+
+  def play
+    system "say -r 200 #{@list.to_string}"
+  end
 end
