@@ -17,3 +17,4 @@ A Node is comprised of data and a pointer to the next node
 
 - data structures
   - Linked List
+- recursion
