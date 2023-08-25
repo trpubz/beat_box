@@ -7,6 +7,12 @@ class LinkedList
     @head
   end
 
+  def valid?(data)
+    white_list = "tee dee deep bop boop la na doop dop plop woo suu pfft deep woo shi shu blop deep doo ditt woo hoo shu"
+
+    white_list.include?(data) ? true : false
+  end
+
   def append(data)
 
     if data.split(" ").length > 1
@@ -14,6 +20,7 @@ class LinkedList
       return
     end
 
+    return unless valid?(data)
     return unless head_present?(data)
 
     node = @head
@@ -24,6 +31,12 @@ class LinkedList
   end
 
   def prepend(data)
+    if data.split(" ").length > 1
+      data.split(" ").each { |d| self.prepend(d) }
+      return
+    end
+
+    return unless valid?(data)
     return unless head_present?(data)
 
     new_node = Node.new(data)
