@@ -38,13 +38,13 @@ describe 'bb #play' do
   end
 end
 
-describe 'bb list should validate beats' do
+describe 'bb list validate beats' do
   bb = BeatBox.new("deep")
 
   it 'should not add beats not whitelisted' do
     bb.append("Mississippi")
     expect(bb.all).to eq "deep"
-    bb.prepend("tee tee tee Mississippi")
+    bb.prepend("Mississippi tee tee tee")
     expect(bb.all).to eq "tee tee tee deep"
   end
 end

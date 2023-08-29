@@ -106,6 +106,7 @@ describe '#append refactoring' do
   it 'should be able to append multiple elements in 1 call' do
     list = LinkedList.new
     list.append("deep woo shi shu blop")
+    # require 'pry'; binding.pry
     expect(list.count).to eq 5
   end
 end
