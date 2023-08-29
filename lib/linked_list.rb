@@ -7,14 +7,17 @@ class LinkedList
     @head
   end
 
-  def append(data)
+  def pend(data, pend_method)
     if data.split(" ").length > 1
-      data.split(" ").each { |d| self.append(d) }
-      return
+      data.split(" ").each { |d| pend_method.call(d) }
+      return false
     end
+    valid?(data) ? head_present?(data) : false
 
-    return unless valid?(data)
-    return unless head_present?(data)
+  end
+
+  def append(data)
+    return if pend(data, method(:append)) == false
 
     node = @head
     until node.next_node.nil?
@@ -24,13 +27,7 @@ class LinkedList
   end
 
   def prepend(data)
-    if data.split(" ").length > 1
-      data.split(" ").each { |d| self.prepend(d) }
-      return
-    end
-
-    return unless valid?(data)
-    return unless head_present?(data)
+    return if pend(data, method(:prepend)) == false
 
     new_node = Node.new(data)
     new_node.next_node = @head
