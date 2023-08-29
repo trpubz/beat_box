@@ -7,14 +7,7 @@ class LinkedList
     @head
   end
 
-  def valid?(data)
-    white_list = "tee dee deep bop boop la na doop dop plop woo suu pfft deep woo shi shu blop deep doo ditt woo hoo shu"
-
-    white_list.include?(data) ? true : false
-  end
-
   def append(data)
-
     if data.split(" ").length > 1
       data.split(" ").each { |d| self.append(d) }
       return
@@ -74,11 +67,11 @@ class LinkedList
       node = node.next_node
     end
     num_nodes.times do
-      returned_data << node.data + " "
+      returned_data << node.data + ' '
       node = node.next_node
     end
 
-    return returned_data.chomp(" ")
+    return returned_data.strip
   end
 
   def includes?(data)
@@ -92,7 +85,7 @@ class LinkedList
 
   def pop
     node = @head
-    prior_node = Node.new(nil) # instantiation for when popping the head
+    prior_node = Node.new(nil) # instantiation needed when popping the head
     until node.next_node.nil?
       prior_node = node
       node = node.next_node
@@ -105,6 +98,15 @@ class LinkedList
     return pop_data
   end
 
+
+  # helper method
+  def valid?(data)
+    white_list = "tee dee deep bop boop la na doop dop plop woo suu pfft deep woo shi shu blop deep doo ditt woo hoo shu"
+
+    white_list.include?(data) ? true : false
+  end
+
+  # helper method
   def head_present?(data)
     if @head.nil?
       @head = Node.new(data)
@@ -115,17 +117,17 @@ class LinkedList
   end
 
   def count
-    _, count = nodder
+    _, count = node_traverser
     return count
   end
 
   def to_string
-    str, _ = nodder
+    str, _ = node_traverser
     return str
   end
 
-  # node traverser that returns all strings & list size
-  def nodder
+  # returns all strings & list size
+  def node_traverser
     str = ''
     counter = 0
     node = @head
@@ -134,6 +136,6 @@ class LinkedList
       counter += 1
       node = node.next_node
     end
-    return str.chomp(' '), counter
+    return str.strip, counter
   end
 end
