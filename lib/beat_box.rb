@@ -2,6 +2,7 @@ require 'linked_list'
 
 class BeatBox
   attr_reader :list
+  
   def initialize(data = nil)
     @list = LinkedList.new
     @rate = 500

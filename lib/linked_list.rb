@@ -13,7 +13,6 @@ class LinkedList
       return false
     end
     valid?(data) ? head_present?(data) : false
-
   end
 
   def append(data)
